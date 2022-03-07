@@ -1,34 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.ChoiceBox?>
 <!--include a BorderPane here-->
-<BorderPane fx:controller="fsd.assignment.assignment1.Controller" xmlns:fx="http://javafx.com/fxml">
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fsd.assignment.assignment1.Controller">
     <!--include a top section-->
     <top>
         <!--include a GridPane<> with a vertical and horizontal gap of 20-->
-        <GridPane > <!--these correspond to the variables in the Controller-->
+        <GridPane hgap="20" vgap="20"> <!--these correspond to the variables in the Controller-->
             <!--include the labels, textfields and choicebox elements here-->
+            <Label text="StudentID"
+                   GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <TextField fx:id="studId"
+                GridPane.columnIndex="1" GridPane.rowIndex="0"
+            />
+            <Label text="Year of Study"
+                   GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <TextField fx:id="yearStudy"
+                    GridPane.columnIndex="1" GridPane.rowIndex="1"
+            />
+            <Label text="Module Option 1"
+                   GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+            <ChoiceBox fx:id="mod1Choice"
+                       GridPane.columnIndex="3" GridPane.rowIndex="0">
+
+            </ChoiceBox>
+            <Label text="Module Option 2"
+                   GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+            <ChoiceBox fx:id="mod2Choice"
+                       GridPane.columnIndex="3" GridPane.rowIndex="1">
+
+            </ChoiceBox>
+            <Label text="Module Option 3"
+                   GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+            <ChoiceBox fx:id="mod3Choice"
+                       GridPane.columnIndex="3" GridPane.rowIndex="2">
+
+            </ChoiceBox>
+
             <!--include the Button<> with the onAction="addStudentData", no fx:id is required-->
+            <Button text="Add..."
+                    GridPane.columnIndex="0" GridPane.rowIndex="3"/>
             <!--the last element is the <Label> you may not notice this on the image-->
         </GridPane>
     </top>
 
     <left>
-        <VBox >
+        <VBox>
             <Label>
 
             </Label>
@@ -46,4 +67,7 @@
             </GridPane>
         </VBox>
     </bottom>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
 </BorderPane>
