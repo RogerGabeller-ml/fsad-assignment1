@@ -38,13 +38,13 @@
                    GridPane.columnIndex="2" GridPane.rowIndex="2"/>
             <ChoiceBox fx:id="mod3Choice"
                        GridPane.columnIndex="3" GridPane.rowIndex="2">
-
             </ChoiceBox>
 
             <!--include the Button<> with the onAction="addStudentData", no fx:id is required-->
-            <Button text="Add..."
+            <Button text="Add..." onAction="#addStudentData"
                     GridPane.columnIndex="0" GridPane.rowIndex="3"/>
             <!--the last element is the <Label> you may not notice this on the image-->
+            <Label fx:id="validateStudent"/>
         </GridPane>
     </top>
 
@@ -64,6 +64,22 @@
         <VBox>
             <GridPane hgap="20">
                 <!--include the Labels as well as the fx:id's, see Controller class as well as image-->
+                <Label text="Year of Study"
+                        GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <Label fx:id="yearStudyView"
+                        GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <Label text="Module Option 1"
+                        GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                <Label fx:id="mod1View"
+                        GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                <Label text="Module Option 2"
+                        GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                <Label fx:id="mod2View"
+                        GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                <Label text="Module Option 3"
+                        GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+                <Label fx:id="mod3View"
+                        GridPane.rowIndex="1" GridPane.columnIndex="3"/>
             </GridPane>
         </VBox>
     </bottom>

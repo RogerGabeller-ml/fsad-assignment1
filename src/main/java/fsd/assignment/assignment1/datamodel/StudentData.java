@@ -12,8 +12,6 @@ import java.nio.file.Paths;
 import java.util.Iterator;
 
 public class StudentData {
-    /* TODO: include an instance of StudentData
-    */
     private static StudentData instance;
     private static String filename = "student-data.txt";
 

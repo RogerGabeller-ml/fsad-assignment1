@@ -38,7 +38,6 @@
                    GridPane.columnIndex="2" GridPane.rowIndex="2"/>
             <ChoiceBox fx:id="mod3Choice"
                        GridPane.columnIndex="3" GridPane.rowIndex="2">
-
             </ChoiceBox>
 
             <!--include the Button<> with the onAction="addStudentData", no fx:id is required-->

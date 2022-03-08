@@ -10,6 +10,16 @@
             <Label text="Module Option 1" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
             <Label text="Module Option 2" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
             <Label text="Module Option 3" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+            <Label fx:id="yearStudyDisplay" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <Label fx:id="mod1Edit" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Label fx:id="mod2Edit" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+            <Label fx:id="mod3Edit" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+            <Label text="Module Option 1" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <Label text="Module Option 2" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+            <Label text="Module Option 3" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+            <ChoiceBox fx:id="mod1ChoiceEdit" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+            <ChoiceBox fx:id="mod2ChoiceEdit" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+            <ChoiceBox fx:id="mod3ChoiceEdit" GridPane.columnIndex="3" GridPane.rowIndex="3"/>
             <!--make use of the EditStudentController to complete the rest of the fxml-->
         </GridPane>
     </content>

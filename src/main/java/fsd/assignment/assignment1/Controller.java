@@ -91,9 +91,13 @@ public class Controller {
         studentListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Student>() {
             @Override
             public void changed(ObservableValue<? extends Student> observable, Student oldValue, Student newValue) {
-                /* TODO: complete the code so that if a studId is selected then the changed()
-                         should ensure that the other fields related to the selected item appear at the bottom of the window
-                */
+                if (newValue != null) {
+                    Student item = studentListView.getSelectionModel().getSelectedItem();
+                    yearStudyView.setText(item.getYearOfStudy());
+                    mod1View.setText(item.getModule1());
+                    mod2View.setText(item.getModule2());
+                    mod3View.setText(item.getModule3());
+                }
             }
         });
         //the setOnAction ensures that when a ChoiceBox is selected the getChoice() grabs the selected choice
@@ -101,43 +105,29 @@ public class Controller {
         mod2Choice.setOnAction(this::getChoice);
         mod3Choice.setOnAction(this::getChoice);
 
-        /* TODO: the array declared above for modChoices must be added to each Choicebox
-                 include the code here to addAll()
-        */
-        //insert the code to addAll() the modChoices [] to each ChoiceBox here
+        mod1Choice.getItems().addAll(modChoices);
+        mod2Choice.getItems().addAll(modChoices);
+        mod3Choice.getItems().addAll(modChoices);
 
-        //deleting a student
-        /* TODO: create a new listContextMenu -> defined above in the variables
-        */
-        listContextMenu = null;
-        /* TODO: create a MenuItem object so that when the user right-clicks a studId
-                 the word Delete? appears
-         */
-        MenuItem deleteStudent = null;
+        listContextMenu = new ContextMenu();
+
+        MenuItem deleteStudent = new MenuItem("Delete?");
 
         deleteStudent.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                /* TODO: get the item to be deleted and call the deleteStudent()
-                 */
+                deleteStudent(studentListView.getSelectionModel().getSelectedItem());
             }
         });
 
-        //editing a student
-        /* TODO: create a new listContextMenu -> defined above in the variables
-         */
-        listContextMenu = null;
+        listContextMenu = new ContextMenu();
 
-        /* TODO: create a MenuItem object so that when the user right-clicks a studId
-                 the word Edit?? appears
-         */
-        MenuItem editStudent = null;
+        MenuItem editStudent = new MenuItem("Edit?");
 
         editStudent.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                /* TODO: get the item to be edited and call the editStudent()
-                */
+                editStudent(studentListView.getSelectionModel().getSelectedItem());
             }
         });
 
@@ -151,9 +141,12 @@ public class Controller {
                 ListCell<Student> cell = new ListCell<Student>() {
                     @Override
                     protected void updateItem(Student stu, boolean empty) {
-                        /* TODO: ensure that the studentListView has studId's or not when
-                                 the delete a student takes place
-                         */
+                        super.updateItem(stu, empty);
+                        if (empty) {
+                            setText(null);
+                        } else {
+                            setText(stu.getStudId());
+                        }
                     }//end of update()
                 };
                 //code included as part of the delete
@@ -169,30 +162,30 @@ public class Controller {
             }
         }); //end of setting the cell factory
 
-        /* TODO: ensure that the studId's are sorted according to year of study in ascending order
-        */
-        SortedList<Student> sortedByYear = null;
+        SortedList<Student> sortedByYear = new SortedList<Student>(StudentData.getInstance().getStudents(),
+                new Comparator<Student>() {
+                    @Override
+                    public int compare(Student o1, Student o2) {
+                        return o1.getYearOfStudy().compareTo(o2.getYearOfStudy());
+                    }
+                });
 
-        /* TODO: step 1 - set items using the sorted list
-                 step 2 - ensure that only one studId can be selected at one time
-                 step 3 - ensure that the first studId is highlighted when the application commences
-         */
-
+        studentListView.setItems(sortedByYear);
+        studentListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        studentListView.getSelectionModel().selectFirst();
     }
 
     public void getChoice(ActionEvent event) {
         /* TODO: make use of event to determine each choice and assign each module choice to
                  choice1, choice2 and choice3
          */
-        }
+    }
 
 
     @FXML
     public void addStudentData() {
-        /* TODO: get the values from the textfields
-         */
-        String studIdS = null;
-        String yearStudyS = null;
+        String studIdS = studentToAdd.getStudId();
+        String yearStudyS = studentToAdd.getYearOfStudy();
         /* TODO: validate whether the studIdS and yearStudyS are occupied, BOTH have to be occupied
                  for the add to take place, if one or both are unoccupied print the following message
                  in the validateStudent label -> message to be printed is

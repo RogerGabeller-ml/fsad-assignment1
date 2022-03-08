@@ -57,9 +57,9 @@ public class EditStudentController {
         //insert 4 lines of code here
         /* TODO: get the new module choices using mod1S, mod2S and mod3S
          */
-        mod1S = null;
-        mod2S = null;
-        mod3S = null;
+        mod1S = mod1ChoiceEdit.getValue();
+        mod2S = mod2ChoiceEdit.getValue();
+        mod3S = mod3ChoiceEdit.getValue();
     }
 
     public Student processEdit(Student stu) {
