@@ -29,7 +29,6 @@ import java.util.Optional;
 
 public class Controller {
 
-    //these variables correspond to the <top> of main-view.fxml
     @FXML
     private TextField studId;
 
@@ -51,15 +50,11 @@ public class Controller {
             "Adv Programming", "Project"};
 
     @FXML
-    private Label validateStudent; //remember this is the Label that you only see when there is an invalid "add"
+    private Label validateStudent;
 
-    //validateStudent is the last element corresponding to <top>
-
-    //these variables correspond to the <left> i.e. the studentListView
     @FXML
     private ListView<Student> studentListView;
 
-    //these variables correspond to the <bottom> part of the border
     @FXML
     private Label yearStudyView;
 
@@ -72,17 +67,12 @@ public class Controller {
     @FXML
     private Label mod3View;
 
-    //mod3View is the last element for the bottom part of the border
-
-    //the contextMenu is used for the right-click regarding Edit / Delete
     @FXML
     private ContextMenu listContextMenu;
 
-    //this variable is used when switching windows from add to edit
     @FXML
     private BorderPane mainWindow;
 
-    //used to add a student to the ArrayList for addStudentData()
     public Student studentToAdd;
 
 
@@ -100,7 +90,6 @@ public class Controller {
                 }
             }
         });
-        //the setOnAction ensures that when a ChoiceBox is selected the getChoice() grabs the selected choice
         mod1Choice.setOnAction(this::getChoice);
         mod2Choice.setOnAction(this::getChoice);
         mod3Choice.setOnAction(this::getChoice);
@@ -131,11 +120,9 @@ public class Controller {
             }
         });
 
-        //code provided to ensure that contextMenu appears as part of the above actions
         listContextMenu.getItems().add(deleteStudent);
         listContextMenu.getItems().add(editStudent);
 
-        //to ensure access to a particular cell in the studentListView
         studentListView.setCellFactory(new Callback<ListView<Student>, ListCell<Student>>() {
             public ListCell<Student> call(ListView<Student> param) {
                 ListCell<Student> cell = new ListCell<Student>() {
@@ -147,9 +134,8 @@ public class Controller {
                         } else {
                             setText(stu.getStudId());
                         }
-                    }//end of update()
+                    }
                 };
-                //code included as part of the delete
                 cell.emptyProperty().addListener(
                         (obs, wasEmpty, isNowEmpty) -> {
                             if (isNowEmpty) {
@@ -160,7 +146,7 @@ public class Controller {
                         });
                 return cell;
             }
-        }); //end of setting the cell factory
+        });
 
         SortedList<Student> sortedByYear = new SortedList<Student>(StudentData.getInstance().getStudents(),
                 new Comparator<Student>() {
@@ -176,9 +162,9 @@ public class Controller {
     }
 
     public void getChoice(ActionEvent event) {
-        choice1 = mod1Choice.getValue();
-        choice2 = mod2Choice.getValue();
-        choice3 = mod3Choice.getValue();
+        if (event.getSource() == mod1Choice) choice1 = mod1Choice.getValue();
+        if (event.getSource() == mod2Choice) choice2 = mod2Choice.getValue();
+        if (event.getSource() == mod3Choice)choice3 = mod3Choice.getValue();
     }
 
 
@@ -187,7 +173,7 @@ public class Controller {
         String studIdS = studId.getText();
         String yearStudyS = yearStudy.getText();
         studentToAdd = new Student(studIdS, yearStudyS, choice1, choice2, choice3);
-        //do the if...here
+
         if (!studIdS.equals("") && !yearStudyS.equals("")) {
             validateStudent.setText("");
             StudentData.getInstance().getStudents().add(studentToAdd);

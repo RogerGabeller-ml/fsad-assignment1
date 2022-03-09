@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-//this class is given to you
+
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
@@ -33,7 +33,7 @@ public class Main extends Application {
 
     @Override
     public void init() throws IOException{
-        try{ //load the data in
+        try{
             StudentData.getInstance().loadStudentData();
         }catch (IOException e){
             System.out.println(e.getMessage());

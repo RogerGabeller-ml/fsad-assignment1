@@ -4,15 +4,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<!--include a BorderPane here-->
-
 <BorderPane xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml" fx:controller="fsd.assignment.assignment1.Controller"
     fx:id="mainWindow">
-    <!--include a top section-->
     <top>
-        <!--include a GridPane<> with a vertical and horizontal gap of 20-->
-        <GridPane hgap="20" vgap="20"> <!--these correspond to the variables in the Controller-->
-            <!--include the labels, textfields and choicebox elements here-->
+        <GridPane hgap="20" vgap="20">
             <Label text="StudentID"
                    GridPane.columnIndex="0" GridPane.rowIndex="0"/>
             <TextField fx:id="studId"
@@ -40,11 +35,8 @@
             <ChoiceBox fx:id="mod3Choice"
                        GridPane.columnIndex="3" GridPane.rowIndex="2">
             </ChoiceBox>
-
-            <!--include the Button<> with the onAction="addStudentData", no fx:id is required-->
             <Button text="Add..." onAction="#addStudentData"
                     GridPane.columnIndex="1" GridPane.rowIndex="3"/>
-            <!--the last element is the <Label> you may not notice this on the image-->
             <Label fx:id="validateStudent"
                    GridPane.columnIndex="2" GridPane.rowIndex="3"/>
         </GridPane>
@@ -61,11 +53,9 @@
             </Label>
         </VBox>
     </left>
-    <!--This section is to show a student modules chosen when the studId is clicked-->
     <bottom>
         <VBox>
             <GridPane hgap="20">
-                <!--include the Labels as well as the fx:id's, see Controller class as well as image-->
                 <Label text="Year of Study"
                         GridPane.rowIndex="0" GridPane.columnIndex="0"/>
                 <Label fx:id="yearStudyView"
