@@ -44,6 +44,10 @@ public class EditStudentController {
         /* TODO: add all the modChoices to each ChoiceBox
          */
         //insert 3 lines of code here
+        mod1ChoiceEdit.getItems().addAll(modChoices);
+        mod2ChoiceEdit.getItems().addAll(modChoices);
+        mod3ChoiceEdit.getItems().addAll(modChoices);
+
         //these lines have been given to you includes the setOnAction if a ChoiceBox is selected
         mod1ChoiceEdit.setOnAction(this::getChoiceEdit);
         mod2ChoiceEdit.setOnAction(this::getChoiceEdit);
@@ -52,11 +56,12 @@ public class EditStudentController {
 
     //to ensure that detail pops up to edit
     public void setToEdit(Student stu) {
-        /* TODO: display the student to be edited details
-         */
-        //insert 4 lines of code here
-        /* TODO: get the new module choices using mod1S, mod2S and mod3S
-         */
+
+        yearStudyDisplay.setText(stu.getYearOfStudy());
+        mod1Edit.setText(stu.getModule1());
+        mod2Edit.setText(stu.getModule2());
+        mod3Edit.setText(stu.getModule3());
+
         mod1S = mod1ChoiceEdit.getValue();
         mod2S = mod2ChoiceEdit.getValue();
         mod3S = mod3ChoiceEdit.getValue();

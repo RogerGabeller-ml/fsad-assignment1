@@ -58,7 +58,7 @@ public class StudentData {
         Path path = Paths.get(filename);
         BufferedWriter bw = Files.newBufferedWriter(path);
         try {
-            Iterator<Student> it = (Iterator<Student>) getStudents();
+            Iterator<Student> it = getStudents().iterator();
             while (it.hasNext()) {
                 Student item = it.next();
                 bw.write(String.format("%s\t%s\t%s\t%s\t%s\t", item, item.getYearOfStudy(),
